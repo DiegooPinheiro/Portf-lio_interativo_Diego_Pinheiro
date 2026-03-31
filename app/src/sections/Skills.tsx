@@ -2,12 +2,12 @@ import { useEffect, useRef, useState } from 'react';
 import {
   Code2,
   Database,
-  GitBranch,
   Layers,
-  Monitor,
+  Layout,
+  Smartphone,
   Server,
   Terminal,
-  Users,
+  Cloud,
 } from 'lucide-react';
 
 interface Skill {
@@ -45,13 +45,27 @@ const Skills = () => {
 
   const skillCategories: SkillCategory[] = [
     {
-      title: 'Desenvolvimento Web',
-      icon: <Monitor size={24} />,
+      title: 'Frontend & Mobile',
+      icon: <Layout size={24} />,
       skills: [
-        { name: 'HTML/CSS', icon: <Code2 size={16} /> },
+        { name: 'HTML / CSS', icon: <Code2 size={16} /> },
+        { name: 'Tailwind CSS', icon: <Code2 size={16} /> },
         { name: 'JavaScript', icon: <Terminal size={16} /> },
+        { name: 'TypeScript', icon: <Terminal size={16} /> },
         { name: 'React', icon: <Layers size={16} /> },
+        { name: 'Vue', icon: <Layers size={16} /> },
+        { name: 'React Native', icon: <Smartphone size={16} /> },
+      ],
+    },
+    {
+      title: 'Backend & Cloud',
+      icon: <Server size={24} />,
+      skills: [
         { name: 'Node.js', icon: <Server size={16} /> },
+        { name: 'Python', icon: <Terminal size={16} /> },
+        { name: 'Django', icon: <Terminal size={16} /> },
+        { name: 'Firebase', icon: <Cloud size={16} /> },
+        { name: 'Supabase', icon: <Cloud size={16} /> },
       ],
     },
     {
@@ -61,17 +75,7 @@ const Skills = () => {
         { name: 'SQL', icon: <Database size={16} /> },
         { name: 'MySQL', icon: <Database size={16} /> },
         { name: 'PostgreSQL', icon: <Database size={16} /> },
-        { name: 'Database Design', icon: <Layers size={16} /> },
-      ],
-    },
-    {
-      title: 'Ferramentas & Outros',
-      icon: <GitBranch size={24} />,
-      skills: [
-        { name: 'Git', icon: <GitBranch size={16} /> },
-        { name: 'Python', icon: <Terminal size={16} /> },
-        { name: 'Metodologias Ágeis', icon: <Users size={16} /> },
-        { name: 'Gestão de RH', icon: <Users size={16} /> },
+        { name: 'MongoDB', icon: <Database size={16} /> },
       ],
     },
   ];
@@ -149,11 +153,11 @@ const Skills = () => {
                 </div>
 
                 {/* Skills List */}
-                <div className="space-y-3">
+                <div className="flex flex-wrap gap-3">
                   {category.skills.map((skill, skillIndex) => (
                     <div
                       key={skill.name}
-                      className="flex items-center space-x-3 p-3 rounded-lg border border-transparent hover:border-red-600/30 hover:bg-red-600/5 transition-all duration-300 group/skill"
+                      className="flex items-center space-x-2 px-4 py-2 rounded-full border border-red-600/20 bg-red-600/5 hover:border-red-600/60 hover:bg-red-600/10 hover:shadow-md hover:shadow-red-600/20 hover:-translate-y-1 transition-all duration-300 group/skill cursor-default"
                       style={{
                         opacity: isVisible ? 1 : 0,
                         animation: isVisible
@@ -161,10 +165,10 @@ const Skills = () => {
                           : 'none',
                       }}
                     >
-                      <span className="text-red-500/60 group-hover/skill:text-red-500 transition-colors duration-300">
+                      <span className="text-red-500/70 group-hover/skill:text-red-500 group-hover/skill:scale-110 transition-transform duration-300">
                         {skill.icon}
                       </span>
-                      <span className="text-gray-300 text-sm md:text-base group-hover/skill:text-white transition-colors duration-300">
+                      <span className="text-gray-300 text-sm font-medium group-hover/skill:text-white transition-colors duration-300">
                         {skill.name}
                       </span>
                     </div>

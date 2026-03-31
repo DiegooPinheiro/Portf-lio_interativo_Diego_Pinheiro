@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
-import { Trophy, Award, Calendar, Clock } from 'lucide-react';
+import { Calendar, Clock } from 'lucide-react';
 
 interface Achievement {
+  image?: string;
   type: string;
   title: string;
   description: string;
   date: string;
   duration?: string;
-  icon: React.ReactNode;
 }
 
 const Achievements = () => {
@@ -36,20 +36,20 @@ const Achievements = () => {
     {
       type: 'Reconhecimento',
       title: 'Workshop Introdução à Programação com Python',
+      image: '/python_workshop_cover.png',
       description:
         'Participação no workshop de introdução à programação utilizando Python, com foco em conceitos fundamentais e aplicações práticas.',
       date: '28/03/2023',
       duration: '4 horas',
-      icon: <Trophy size={32} />,
     },
     {
       type: 'Premiação',
       title: 'Segunda Maratona Senac de Inovação – 2º lugar',
+      image: '/Maratona-Senac.jpeg',
       description:
         'Participação na maratona de inovação do SENAC, desenvolvendo soluções criativas e trabalhando em equipe para resolver desafios reais do mercado.',
       date: '19/08/2025 - 22/08/2025',
       duration: '16 horas',
-      icon: <Award size={32} />,
     },
   ];
 
@@ -119,19 +119,20 @@ const Achievements = () => {
               }}
             >
               <div className="relative p-6 md:p-8 border border-red-600/30 rounded-lg bg-gradient-to-br from-red-600/5 to-transparent hover:border-red-600 transition-all duration-300 hover:shadow-lg hover:shadow-red-600/10">
+                {achievement.image && (
+                  <div className="mb-6 -mx-6 md:-mx-8 -mt-6 md:-mt-8 h-48 overflow-hidden rounded-t-lg">
+                    <img 
+                      src={achievement.image} 
+                      alt={achievement.title} 
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                  </div>
+                )}
                 {/* Type Badge */}
-                <div className="absolute -top-3 left-6">
+                <div className="absolute -top-3 left-6 z-10">
                   <span className="px-3 py-1 bg-red-600 text-white text-xs font-medium rounded-full">
                     {achievement.type}
                   </span>
-                </div>
-
-                {/* Icon */}
-                <div
-                  className="mb-6 w-16 h-16 rounded-full bg-red-600/20 flex items-center justify-center text-red-500 group-hover:bg-red-600 group-hover:text-white group-hover:scale-110 transition-all duration-300 animate-float"
-                  style={{ animationDelay: `${index * 0.5}s` }}
-                >
-                  {achievement.icon}
                 </div>
 
                 {/* Content */}
@@ -157,7 +158,7 @@ const Achievements = () => {
                 </div>
 
                 {/* Decorative Corner */}
-                <div className="absolute top-0 right-0 w-16 h-16 overflow-hidden rounded-tr-lg">
+                <div className="absolute top-0 right-0 w-16 h-16 overflow-hidden rounded-tr-lg z-10">
                   <div className="absolute top-0 right-0 w-px h-12 bg-gradient-to-b from-red-600/50 to-transparent transform rotate-45 origin-top-right" />
                 </div>
               </div>

@@ -37,7 +37,7 @@ const Projects = () => {
     {
       title: 'Blog Científico',
       description: 'Um blog focado em divulgação e conteúdos científicos com interface moderna.',
-      image: '/capa-blogcientifico.png',
+      image: '/blogcientifico.png',
       technologies: ['Vue', 'JavaScript', 'HTML', 'CSS'],
       demoUrl: 'https://blog-cient-fico.vercel.app/',
       repoUrl: 'https://github.com/DiegooPinheiro/Blog-Cient-fico',
