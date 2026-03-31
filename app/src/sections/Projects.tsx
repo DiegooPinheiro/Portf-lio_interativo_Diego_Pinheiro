@@ -35,12 +35,12 @@ const Projects = () => {
   // Projetos - adicione seus projetos aqui
   const projects: Project[] = [
     {
-      title: 'Projeto 1',
-      description: 'Descrição do seu primeiro projeto. Explique o que ele faz e qual problema resolve.',
-      image: '/project-placeholder.jpg',
-      technologies: ['React', 'TypeScript', 'Node.js'],
-      demoUrl: '#', // Substitua pelo link do deploy
-      repoUrl: '#', // Substitua pelo link do GitHub
+      title: 'Blog Científico',
+      description: 'Um blog focado em divulgação e conteúdos científicos com interface moderna.',
+      image: '/capa-blogcientifico.png',
+      technologies: ['Vue', 'JavaScript', 'HTML', 'CSS'],
+      demoUrl: 'https://blog-cient-fico.vercel.app/',
+      repoUrl: '#',
     },
     {
       title: 'Projeto 2',
@@ -126,9 +126,17 @@ const Projects = () => {
               <div className="relative overflow-hidden rounded-lg border border-red-600/30 bg-gradient-to-br from-red-600/5 to-transparent hover:border-red-600 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-red-600/10">
                 {/* Project Image */}
                 <div className="relative h-48 overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-red-900/30 to-black/60 flex items-center justify-center">
-                    <Layers size={48} className="text-red-600/50" />
-                  </div>
+                  {project.image && project.image !== '/project-placeholder.jpg' ? (
+                    <img 
+                      src={project.image} 
+                      alt={project.title} 
+                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 bg-gradient-to-br from-red-900/30 to-black/60 flex items-center justify-center">
+                      <Layers size={48} className="text-red-600/50" />
+                    </div>
+                  )}
                   {/* Overlay on hover */}
                   <div className="absolute inset-0 bg-red-600/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
                     {project.demoUrl && (

@@ -6,6 +6,7 @@ interface EducationItem {
   institution: string;
   period: string;
   status: 'completed' | 'ongoing';
+  image: string;
 }
 
 const Education = () => {
@@ -36,24 +37,28 @@ const Education = () => {
       institution: 'SENAC',
       period: '1/2025 – 4/2026',
       status: 'ongoing',
+      image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=600&auto=format&fit=crop',
     },
     {
       title: 'Recursos Humanos',
       institution: 'SENAC',
       period: '6/2023 - 4/2024',
       status: 'completed',
+      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop',
     },
     {
       title: 'Programador Web',
       institution: 'SENAC',
       period: '1/2023 - 5/2023',
       status: 'completed',
+      image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600&auto=format&fit=crop',
     },
     {
       title: 'DBA - Administrador de Banco de Dados',
       institution: 'SENAC',
       period: '8/2022 - 1/2023',
       status: 'completed',
+      image: 'https://images.unsplash.com/photo-1544383835-bda2bc66a55d?q=80&w=600&auto=format&fit=crop',
     },
   ];
 
@@ -120,47 +125,55 @@ const Education = () => {
                   : 'none',
               }}
             >
-              <div className="relative p-6 md:p-8 border border-red-600/30 rounded-lg bg-gradient-to-br from-red-600/5 to-transparent hover:border-red-600 transition-all duration-300 card-hover preserve-3d">
-                {/* Status Indicator */}
-                <div className="absolute top-4 right-4">
-                  {item.status === 'ongoing' ? (
-                    <div className="flex items-center space-x-2 text-amber-500">
-                      <Circle
-                        size={12}
-                        className="animate-pulse"
-                        fill="currentColor"
-                      />
-                      <span className="text-xs font-medium">Em andamento</span>
-                    </div>
-                  ) : (
-                    <div className="flex items-center space-x-2 text-green-500">
-                      <CheckCircle2 size={14} />
-                      <span className="text-xs font-medium">Completo</span>
-                    </div>
-                  )}
+              <div className="relative border border-red-600/30 rounded-xl bg-gradient-to-br from-red-600/5 to-transparent hover:border-red-600 transition-all duration-300 card-hover preserve-3d overflow-hidden flex flex-col h-full">
+                
+                {/* Banner Image */}
+                <div className="w-full h-32 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500 z-10" />
+                  <img 
+                    src={item.image} 
+                    alt={item.title} 
+                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                  />
+                  
+                  {/* Status Indicator */}
+                  <div className="absolute top-4 right-4 z-20 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10">
+                    {item.status === 'ongoing' ? (
+                      <div className="flex items-center space-x-2 text-amber-500">
+                        <Circle
+                          size={10}
+                          className="animate-pulse"
+                          fill="currentColor"
+                        />
+                        <span className="text-xs font-semibold tracking-wide uppercase">Em andamento</span>
+                      </div>
+                    ) : (
+                      <div className="flex items-center space-x-2 text-emerald-400">
+                        <CheckCircle2 size={12} />
+                        <span className="text-xs font-semibold tracking-wide uppercase">Completo</span>
+                      </div>
+                    )}
+                  </div>
                 </div>
 
-                {/* Icon */}
-                <div className="mb-4 w-12 h-12 rounded-lg bg-red-600/20 flex items-center justify-center text-red-500 group-hover:bg-red-600 group-hover:text-white transition-all duration-300">
-                  <BookOpen size={24} />
-                </div>
+                <div className="p-6 md:p-8 relative flex-grow flex flex-col justify-center">
+                  {/* Content */}
+                  <h3 className="text-lg md:text-xl font-bold text-white mb-2 group-hover:text-red-500 transition-colors duration-300">
+                    {item.title}
+                  </h3>
+                  <p className="text-red-500/80 font-medium mb-4">
+                    {item.institution}
+                  </p>
 
-                {/* Content */}
-                <h3 className="text-lg md:text-xl font-bold text-white mb-2 group-hover:text-red-500 transition-colors duration-300">
-                  {item.title}
-                </h3>
-                <p className="text-red-500 font-medium mb-3">
-                  {item.institution}
-                </p>
-
-                {/* Period */}
-                <div className="flex items-center space-x-2 text-gray-500 text-sm">
-                  <Clock size={14} />
-                  <span>{item.period}</span>
+                  {/* Period */}
+                  <div className="flex items-center space-x-2 text-gray-400 text-sm mt-auto">
+                    <Clock size={14} className="text-red-500/60" />
+                    <span>{item.period}</span>
+                  </div>
                 </div>
 
                 {/* Border Shimmer Effect */}
-                <div className="absolute inset-0 rounded-lg overflow-hidden pointer-events-none">
+                <div className="absolute inset-0 rounded-xl overflow-hidden pointer-events-none">
                   <div
                     className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                     style={{
