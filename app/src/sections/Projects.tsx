@@ -40,7 +40,7 @@ const Projects = () => {
       image: '/capa-blogcientifico.png',
       technologies: ['Vue', 'JavaScript', 'HTML', 'CSS'],
       demoUrl: 'https://blog-cient-fico.vercel.app/',
-      repoUrl: '#',
+      repoUrl: 'https://github.com/DiegooPinheiro/Blog-Cient-fico',
     },
     {
       title: 'Projeto 2',
